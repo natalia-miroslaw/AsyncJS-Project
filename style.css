@@ -1,0 +1,41 @@
+.body {
+    margin: 0px;
+}
+
+#table {
+    border: 1px solid darkslategray;
+    margin: 50px;
+    display: grid;
+    width: max-content;
+}
+
+#col-1, #col-2, #companies, #users {
+    padding: 20px;
+    margin: 0px;
+}
+
+#col-1, #col-2 {
+    font-weight: bold;
+}
+
+#col-1 {
+    grid-row: 1;
+    grid-column: 1;
+    border-bottom: 1px solid darkslategray;
+}
+
+#col-2 {
+    grid-row: 1;
+    grid-column: 2;
+    border-left: 1px solid darkslategray;
+    border-bottom: 1px solid darkslategray;
+}
+
+#users {
+    border-left: 1px solid darkslategray;
+}
+
+li {
+    list-style: none;
+    padding: 3px;
+}
