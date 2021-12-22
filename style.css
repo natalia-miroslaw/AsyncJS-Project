@@ -3,15 +3,26 @@
 }
 
 #table {
-    border: 1px solid darkslategray;
+    border-left: 1px solid darkslategray;
+    border-top: 1px solid darkslategray;
+    border-right: 1px solid darkslategray;
     margin: 50px;
     display: grid;
     width: max-content;
 }
 
-#col-1, #col-2, #companies, #users {
+#col-1, #col-2, .companies, .users {
     padding: 20px;
     margin: 0px;
+    border-bottom: 1px solid darkslategray;
+}
+
+.users, #col-2 {
+    border-left: 1px solid darkslategray;
+}
+
+.companies, .users {
+    padding: 5px;
 }
 
 #col-1, #col-2 {
@@ -21,21 +32,17 @@
 #col-1 {
     grid-row: 1;
     grid-column: 1;
-    border-bottom: 1px solid darkslategray;
 }
 
 #col-2 {
     grid-row: 1;
     grid-column: 2;
-    border-left: 1px solid darkslategray;
-    border-bottom: 1px solid darkslategray;
 }
 
-#users {
-    border-left: 1px solid darkslategray;
+.companies {
+    grid-column: 1;
 }
 
-li {
-    list-style: none;
-    padding: 3px;
+.users {
+    grid-column: 2;
 }

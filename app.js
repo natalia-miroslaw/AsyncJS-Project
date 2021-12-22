@@ -1,44 +1,37 @@
 const getUsers = async () => {
   const responseUsers = await fetch('http://localhost:3000/users');
-  const dataUsers = await responseUsers.json();
-
-  const userNameArray = [];
-
-  for (i=0; i < dataUsers.length; i++) {
-    if (dataUsers[i].name) {
-      userNameArray.push(dataUsers[i].name);
-    };
-  };
-
-  for (i=0; i < userNameArray.length; i++) {
-    const userListElement = document.getElementById('users');
-    const liElement = document.createElement('li');
-    liElement.innerText = userNameArray[i];
-    userListElement.appendChild(liElement);
-  };
-
+  return await responseUsers.json();
 };
 
 const getCompanies = async () => {
   const responseCompanies = await fetch('http://localhost:3000/companies');
-  const dataCompanies = await responseCompanies.json();
+  return await responseCompanies.json();
+};
 
-  const companyNameArray = [];
+const showData = async () => {
+  const companies = await getCompanies();   //await, bo muszę poczekać, aż getCompanies w całości się wykona
+  const users = await getUsers();
+  const table = document.getElementById('table');
 
-  for (i=0; i < dataCompanies.length; i++) {
-    if (dataCompanies[i].name) {
-      companyNameArray.push(dataCompanies[i].name);
-    };
-  };
+  for (let i = 0; i < companies.length; i++) {
+    const companyName = companies[i].name;
+    const newCompanyDiv = document.createElement('div');
+    newCompanyDiv.classList.add('companies');
+    newCompanyDiv.innerText = companyName;
+    table.appendChild(newCompanyDiv);
 
-  for (i=0; i < companyNameArray.length; i++) {
-    const companyListElement = document.getElementById('companies');
-    const liElement = document.createElement('li');
-    liElement.innerText = companyNameArray[i];
-    companyListElement.appendChild(liElement);
-  };
+    const newUserDiv = document.createElement('div');
+    newUserDiv.classList.add('users');
+    table.appendChild(newUserDiv);
 
+    for (let j=0; j < users.length; j++) {
+      if (companies[i].uri === users[j].uris.company) {
+        const userName = users[j].name;
+        newUserDiv.innerText += userName + "; ";
+        console.log('done');
+      }
+    }
+  }
 }
 
-getUsers();
-getCompanies();
+showData();
