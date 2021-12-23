@@ -24,11 +24,11 @@ const showData = async () => {
     const newUserDiv = document.createElement('div');
     newUserDiv.classList.add('users');
 
-    function filterFunction(user) {
+    const filterFunction = user => {
       return user.uris.company === companies[i].uri;
     }
 
-    newUserDiv.innerText = users.filter(filterFunction).map(user => user.name);
+    newUserDiv.innerText = users.filtser(filterFunction).map(user => user.name);
     table.appendChild(newUserDiv);
     console.log('done');
   }
