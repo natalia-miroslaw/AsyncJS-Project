@@ -28,7 +28,7 @@ const showData = async () => {
       return user.uris.company === companies[i].uri;
     }
 
-    newUserDiv.innerText = users.filtser(filterFunction).map(user => user.name);
+    newUserDiv.innerText = users.filter(filterFunction).map(user => user.name);
     table.appendChild(newUserDiv);
     console.log('done');
   }
