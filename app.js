@@ -9,6 +9,9 @@ const getCompanies = async () => {
     return await responseCompanies.json();
 };
 const showData = async () => {
+    if (table === null) {
+        return;
+    }
     const companies = await getCompanies();
     const users = await getUsers();
     for (let i = 0; i < companies.length; i++) {

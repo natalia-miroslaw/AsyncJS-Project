@@ -1,4 +1,4 @@
-const table = document.getElementById('table')! as HTMLDivElement;
+const table = document.getElementById('table');
 
 interface CompanyType {
   name: string;
@@ -7,7 +7,9 @@ interface CompanyType {
 
 interface UserType {
   name: string;
-  uris: {company: string};
+  uris: {
+    company: string
+  };
 }
 
 const getUsers = async (): Promise<UserType[]> => {
@@ -21,6 +23,9 @@ const getCompanies = async (): Promise<CompanyType[]> => {
 };
 
 const showData = async () => {
+  if (table === null) {
+    return;
+  }
   const companies = await getCompanies();   //await, bo muszę poczekać, aż getCompanies w całości się wykona
   const users = await getUsers();
 
